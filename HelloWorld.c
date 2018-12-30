@@ -2,7 +2,9 @@
 
 int main(){
 
-  int var;
-  printf("Hello Wolrd");
+  int var = 0;
+
+  printf("Hello Wolrd\n");
   scanf("%d",&var);
+  printf("Deine Eingabe: %d \n",var);
 }
