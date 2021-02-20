@@ -1,0 +1,2 @@
+compile_gcc="gcc -std=c11 -Wall -pedantic"
+compile_clang="clang -Wall -std=c11 -pedantic"
