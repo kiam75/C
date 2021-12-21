@@ -1,2 +1,19 @@
+# Using gcc
+# sudo apt install build-essential
+## compile with gcc
+    gcc <my_programm>.c
+    # With Warnings
+    gcc -Wall <my_programm>.c 
+## run
+    ./a.out
+
+
 compile_gcc="gcc -std=c11 -Wall -pedantic"
+
+# Using clang
+# sudo apt install clang
+## compile with clang
+    clang <my_programm>.c
+    clang -Wall <my_programm>.c  
+
 compile_clang="clang -Wall -std=c11 -pedantic"
