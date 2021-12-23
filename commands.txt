@@ -17,3 +17,26 @@ compile_gcc="gcc -std=c11 -Wall -pedantic"
     clang -Wall <my_programm>.c  
 
 compile_clang="clang -Wall -std=c11 -pedantic"
+
+# Wenn Programm mit Headerdatein 
+# vdemir.github.io/linux/C-Compiling-and-Linking/
+# zb. Verzeichisstruktur
+|-- Header
+|   |-- lib.c
+|   |-- lib.h
+|-- Intro_Functions
+    |-- main.c
+
+1.) Libary compilieren
+cd Header/
+gcc -c lib.c
+    gcc -c lib1.c lib2.c ...
+    (optional wenn mehrere libs in ein bundle)--> Static Linking
+        ar rcs static.a lib1.o lib2.o
+    view object files and functions:
+        nm static.a
+    Just view object files
+        ar -t static.a
+2.) Linken der Files
+gcc -o my_program main.c /<FQPfad-zu-Header>/lib.o
+
