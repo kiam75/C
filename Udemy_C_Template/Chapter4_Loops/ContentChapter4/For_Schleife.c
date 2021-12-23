@@ -33,7 +33,9 @@ int main(){
 
     // Zahlenpyramide
     int height = 4;
-    
+    printf("Höhe der Pyramide: ");
+    scanf("%d",&height);
+
     for (int i = 1; i <= height; i++){
         for ( int j = 0; j < i; j++ ){
             printf("1");
