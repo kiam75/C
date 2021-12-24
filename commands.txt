@@ -40,3 +40,37 @@ gcc -c lib.c
 2.) Linken der Files
 gcc -o my_program main.c /<FQPfad-zu-Header>/lib.o
 
+# Compilercommands
+# C Datei compilieren (in Objektcode übersetzten)
+    gcc -c <my_program>.c -o <my_progam>.o
+# Dann in Maschnencode
+    gcc <my_progam>.o -o my_awsome_program
+
+# Makefile anlegen 
+DEBUG_FLAGS = -g3 -O0
+RELEASE_FLAGS = -DNDEBUG -O3
+
+FLAGS = $(RELEASE_FLAGS)
+
+preprocess:
+	gcc $(FLAGS) -E IfStatement.c > Temp.c
+
+assemble:
+	gcc $(FLAGS) -S IfStatement.c
+
+compile:
+	gcc $(FLAGS) -c IfStatement.c -o IfStatement.o
+
+linking:
+	gcc $(FLAGS) IfStatement.o -o IfStatement
+
+print_exe:
+	objdump -CS IfStatement
+
+
+## Jeder Schritt kann dann aufgerufen werden:
+make preprocess
+make assemble
+make linking
+# Damit kann man sich den Maschinencode ausgeben lassen
+make print_exe
