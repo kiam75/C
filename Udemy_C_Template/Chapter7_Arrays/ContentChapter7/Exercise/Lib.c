@@ -15,7 +15,20 @@ float meanArray(int *array, unsigned int length)
 }
 
 
-float minArray(int* v,int length){
+float maxArray(int* v,unsigned int length){
+    float  max = v[0];
+    
+
+    for(int i = 0 ; i < length; i++){
+        if(max < v[i]){
+            max = v[i]; 
+        }
+    }
+
+    return max;
+}
+
+float minArray(int* v,unsigned int length){
     float  min = v[0];
     
 
