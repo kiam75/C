@@ -1,6 +1,5 @@
 #include <stdio.h>
-
-#include "FunctionsBib.h"
+#include "Lib.h"
 
 void printEvenOrOdd(int number)
 {
@@ -64,4 +63,9 @@ float mean(int number_a, int number_b)
     float mean = sum / 2.0f;
 
     return mean;
+}
+
+void binom(int a, int b, int* c){
+
+    *c = a * a + 2 * a * b + b * b;
 }
