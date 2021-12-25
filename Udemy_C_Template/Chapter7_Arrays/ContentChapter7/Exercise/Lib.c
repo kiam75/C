@@ -13,3 +13,17 @@ float meanArray(int *array, unsigned int length)
 
     return (float)(sum) / (float)(length);
 }
+
+
+float minArray(int* v,int length){
+    float  min = v[0];
+    
+
+    for(int i = 0 ; i < length; i++){
+        if(min > v[i]){
+            min = v[i]; 
+        }
+    }
+
+    return min;
+}
