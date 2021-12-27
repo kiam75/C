@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "FunctionsBib.h"
+#include "Lib.h"
+
+
 
 void printEvenOrOdd(int number)
 {
@@ -184,4 +186,17 @@ int **freeMatrix(int **p_matrix, unsigned int num_rows)
     free(p_matrix);
     p_matrix = NULL;
     return p_matrix;
+}
+
+// Reihen und Spalten tauschen
+int **transposeMatrix(int **p_matrix, unsigned int num_rows,unsigned int num_cols){
+
+    int **p_matrix_transpose = createMatrix(num_cols, num_rows, 0);
+
+    for (unsigned int i = 0; i < num_rows; i++){
+        for (unsigned int k = 0; k < num_cols; k++){
+            p_matrix_transpose[k][i] = p_matrix[i][k];
+        }
+    }
+    return p_matrix_transpose;
 }
