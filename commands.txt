@@ -74,3 +74,25 @@ make assemble
 make linking
 # Damit kann man sich den Maschinencode ausgeben lassen
 make print_exe
+
+
+## Beispiel mit zwei Source Files
+Now, let's say that you have 2 source files, main.c and interface.c and main.c uses some functions defined in interface.c.
+
+First, we will need to compile the source files in order to obtain the object files:
+gcc -c main.c
+gcc -c interface.c
+By invoking the gcc, you will obtain 2 object files: main.o and interface.o.
+
+In order to create the executable, you will need to invoke gcc again, but this time both object files will need to be specified.
+gcc -o main main.o interface.o 
+
+Now you will have in your folder the newly created executable main.
+
+Let's say now that the source file interface.c contains a call to the double sqrt(double number) function from math.h. In order to obtain the executable, you will have to manually link to the m (mathematical) library:
+gcc -o main main.o interface.o -lm
+
+If your program, would have been linked to a user library who we shall call myLib.a placed in /usr/lib/myLib.a, the gcc invocation would had looked like:
+gcc -o main main.o interface.o /usr/lib/myLib.a
+
+If you would need to compile and link multiple files (for a larger project), the method presented above will prove to be cumbersome and time consuming. A better method is the use of a makefile, but this will be discussed in another article.
