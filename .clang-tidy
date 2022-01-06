@@ -1,12 +1,5 @@
 ---
-Checks: '
-clang-analyzer-*,
-clang-cppcoreguidelines-*,
-clang-modernize-*,
--cppcoreguidelines-avoid-magic-numbers,
--cppcoreguidelines-macro-usage,
--cppcoreguidelines-owning-memory
-'
+Checks: 'clang-analyzer-*''
 WarningsAsErrors: '*'
 HeaderFilterRegex: '.*'
 AnalyzeTemporaryDtors: false
