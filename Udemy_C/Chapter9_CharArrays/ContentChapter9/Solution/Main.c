@@ -22,6 +22,7 @@ char *join(char *delimiter, char **list)
     memset(result, 0, current_input_len);
 
     int i = 0;
+
     while (list[i] != NULL)
     {
         size_t current_result_len;

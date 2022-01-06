@@ -4,35 +4,125 @@
 
 char *join(char *delimiter, char **list)
 {
-    size_t delimiter_len = strlen(delimiter);
-    // Das ist das Kleinste (nur ein String) was man braucht
-    size_t current_element_len = strlen(*list);
-    //alternative
-    //size_t current_element_len = strlen(list[0]);
-
-    char *str = NULL;
-
-    if (delimiter == NULL || list == NULL || *list = NULL)
+    if (delimiter == NULL || list == NULL || list[0] == NULL)
     {
-        return str;
+        return NULL;
     }
 
-    // Speicher für Resultat reservieren
-    char *result = (char *)malloc(current_element_len * sizeof(char));
+    size_t delimiter_len = strlen(delimiter);
+    size_t current_input_len = strlen(list[0]);
+
+    char *result = (char *)malloc(current_input_len * sizeof(char));
+
+    if (result == NULL)
+    {
+        return NULL;
+    }
+
+    memset(result, 0, current_input_len);
 
     int i = 0;
-    while (*list + i != NULL)
+
+    while (list[i] != NULL)
     {
-        str = *list;
-        str = delimiter;
+        size_t current_result_len;
+        if (i > 0)
+        {
+            current_result_len = strlen(result);
+        }
+        else
+        {
+            current_result_len = current_input_len;
+        }
+
+        current_input_len = strlen(list[i]);
+        size_t new_result_len = current_input_len;
+        if (i > 0)
+        {
+            new_result_len += delimiter_len;
+            new_result_len += current_result_len;
+        }
+
+        if (new_result_len > current_result_len)
+        {
+            result = realloc(result, new_result_len + 1);
+            current_result_len = new_result_len;
+        }
+
+        if (i > 0)
+        {
+            strncat(result, delimiter, current_result_len);
+        }
+
+        strncat(result, list[i], current_result_len);
+        i++;
     }
 
-    //Alternative
-    /*
-    while(list[i] != NULL){
+    return result;
+}
 
+char *join_bugy(char *delimiter, char **list)
+{
+    size_t delimiter_len = strlen(delimiter);
+    // Das ist das Kleinste (nur ein String) was man braucht
+    size_t current_element_len = strlen(list[0]);
+
+    if (delimiter == NULL || list == NULL || list[0] == NULL)
+    {
+        return NULL;
     }
-    */
+    // Speicher für Resultat reservieren
+    char *result = (char *)malloc(current_element_len * sizeof(char));
+    // Wenn beim Reservieren etwas nicht geklappt hat
+    if (result == NULL)
+    {
+        return NULL;
+    }
+    // Pointerarray einen einzigartigen Wert setzen--> Initialisieren
+    //memset(name-des-arrays, default-zeichen('\0' ist int 0), größe der Pointer)
+    memset(result, 0, current_element_len);
+
+    int i = 0;
+    while (list[i] != NULL)
+    {
+        size_t current_result_len;
+        if (i > 0)
+        {
+            current_result_len = strlen(result);
+        }
+        // Erste Iteration (erster String)
+        else
+        {
+            current_result_len = current_element_len;
+        }
+
+        current_element_len = strlen(list[i]);
+        size_t new_result_len = current_element_len;
+        // Nur wenn man in der nächten Iteration (es gibt ein nächstes Wort) ist
+        // Dann Speicher für nächstes Wort berechen
+        if (i > 0)
+        {
+            // Speicher für Delimiter dazurechnen
+            new_result_len += delimiter_len;
+            new_result_len += current_result_len;
+        }
+        // Ist noch genügend Speicher vorhanden?
+        if (new_result_len > current_result_len)
+        {
+            result = realloc(result, new_result_len + 1);
+            current_result_len = new_result_len;
+        }
+
+        //Nach der ganzen Speichervorbereitung, dann Strings aneinander hängen
+        if (i > 0)
+        {
+            strncat(result, delimiter, current_result_len);
+        }
+        strncat(result, list[i], current_result_len);
+        i++;
+    }
+
+    return result;
 }
 
 int main()
