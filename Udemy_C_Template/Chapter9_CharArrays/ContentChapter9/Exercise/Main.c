@@ -4,6 +4,35 @@
 
 char *join(char *delimiter, char **list)
 {
+    size_t delimiter_len = strlen(delimiter);
+    // Das ist das Kleinste (nur ein String) was man braucht
+    size_t current_element_len = strlen(*list);
+    //alternative
+    //size_t current_element_len = strlen(list[0]);
+
+    char *str = NULL;
+
+    if (delimiter == NULL || list == NULL || *list = NULL)
+    {
+        return str;
+    }
+
+    // Speicher für Resultat reservieren
+    char *result = (char *)malloc(current_element_len * sizeof(char));
+
+    int i = 0;
+    while (*list + i != NULL)
+    {
+        str = *list;
+        str = delimiter;
+    }
+
+    //Alternative
+    /*
+    while(list[i] != NULL){
+
+    }
+    */
 }
 
 int main()
